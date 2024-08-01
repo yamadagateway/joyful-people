@@ -18,6 +18,7 @@
             max-height: 90vh;
             object-fit: contain;
             transform-origin: bottom center;
+            will-change: transform;
         }
     </style>
 </head>
@@ -27,17 +28,24 @@
     <script>
         const image = document.getElementById('floating-image');
         let time = 0;
+        const fps = 60;
+        const interval = 1000 / fps;
 
         function float() {
-            time += 0.03;
-            const rotateAngle = Math.sin(time) * 3; // 左右の揺れ（円弧に沿った動き）
-            const translateY = Math.sin(time * 2) * 5; // 上下の動き（より速く、小さく）
+            time += 0.05;
+            const rotateAngle = Math.sin(time) * 5;
+            const translateY = Math.sin(time * 2) * 5;
 
             image.style.transform = `rotate(${rotateAngle}deg) translateY(${translateY}px)`;
-            requestAnimationFrame(float);
         }
 
-        float();
+        // requestAnimationFrameの代わりにsetIntervalを使用
+        setInterval(float, interval);
+
+        // タッチイベントの防止
+        document.addEventListener('touchmove', function(e) {
+            e.preventDefault();
+        }, { passive: false });
     </script>
 </body>
 </html>
