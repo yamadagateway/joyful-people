@@ -34,8 +34,8 @@
 
         function float() {
             time += timeStep;
-            const rotateAngle = Math.sin(time) * 8; // 回転角度を大きくする
-            const translateY = Math.sin(time * 2) * 8; // 上下の動きも大きくする
+            const rotateAngle = Math.sin(time) * 10; // 回転角度を大きくする
+            const translateY = Math.sin(time * 2) * 10; // 上下の動きも大きくする
 
             image.style.transform = `rotate(${rotateAngle}deg) translateY(${translateY}px)`;
         }
