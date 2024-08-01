@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ゆらゆら揺れる画像</title>
+    <style>
+        body {
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+        }
+        #floating-image {
+            max-width: 90vw;
+            max-height: 90vh;
+            object-fit: contain;
+            transform-origin: bottom center;
+        }
+    </style>
+</head>
+<body>
+    <img id="floating-image" src="people.png" alt="ゆらゆら揺れる画像">
+
+    <script>
+        const image = document.getElementById('floating-image');
+        let time = 0;
+
+        function float() {
+            time += 0.03;
+            const rotateAngle = Math.sin(time) * 5; // 左右の揺れ（円弧に沿った動き）
+            const translateY = Math.sin(time * 2) * 5; // 上下の動き（より速く、小さく）
+
+            image.style.transform = `rotate(${rotateAngle}deg) translateY(${translateY}px)`;
+            requestAnimationFrame(float);
+        }
+
+        float();
+    </script>
+</body>
+</html>
