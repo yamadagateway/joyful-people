@@ -30,12 +30,12 @@
         let time = 0;
         const fps = 30; // フレームレートを30fpsに下げる
         const interval = 1000 / fps;
-        const timeStep = 0.1; // 時間の増分を大きくする
+        const timeStep = 0.8; // 時間の増分を大きくする
 
         function float() {
             time += timeStep;
-            const rotateAngle = Math.sin(time) * 16; // 回転角度を大きくする
-            const translateY = Math.sin(time * 2) * 16; // 上下の動きも大きくする
+            const rotateAngle = Math.sin(time) * 5; // 回転角度を大きくする
+            const translateY = Math.sin(time * 2) * 5; // 上下の動きも大きくする
 
             image.style.transform = `rotate(${rotateAngle}deg) translateY(${translateY}px)`;
         }
