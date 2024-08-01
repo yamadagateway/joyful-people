@@ -30,7 +30,7 @@
 
         function float() {
             time += 0.03;
-            const rotateAngle = Math.sin(time) * 5; // 左右の揺れ（円弧に沿った動き）
+            const rotateAngle = Math.sin(time) * 3; // 左右の揺れ（円弧に沿った動き）
             const translateY = Math.sin(time * 2) * 5; // 上下の動き（より速く、小さく）
 
             image.style.transform = `rotate(${rotateAngle}deg) translateY(${translateY}px)`;
