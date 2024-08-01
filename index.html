@@ -28,24 +28,18 @@
     <script>
         const image = document.getElementById('floating-image');
         let time = 0;
-        const fps = 100;
+        const fps = 30; // フレームレートを30fpsに下げる
         const interval = 1000 / fps;
+        const timeStep = 0.1; // 時間の増分を大きくする
 
         function float() {
-            time += 0.05;
-            const rotateAngle = Math.sin(time) * 5;
-            const translateY = Math.sin(time * 2) * 5;
+            time += timeStep;
+            const rotateAngle = Math.sin(time) * 8; // 回転角度を大きくする
+            const translateY = Math.sin(time * 2) * 8; // 上下の動きも大きくする
 
             image.style.transform = `rotate(${rotateAngle}deg) translateY(${translateY}px)`;
         }
 
-        // requestAnimationFrameの代わりにsetIntervalを使用
         setInterval(float, interval);
 
-        // タッチイベントの防止
-        document.addEventListener('touchmove', function(e) {
-            e.preventDefault();
-        }, { passive: false });
-    </script>
-</body>
-</html>
+        document.addEventListener('touchmove', funct
